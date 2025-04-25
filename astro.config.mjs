@@ -1,3 +1,8 @@
 import { defineConfig } from 'astro/config';
-import staticAdapter from '@astrojs/adapter-static';
+const staticAdapter = () => ({
+  name: 'mock-adapter',
+  adapt() {
+    console.warn('Static adapter not found. Using mock adapter for local dev.');
+  }
+});
 export default defineConfig({ adapter: staticAdapter() });
