@@ -1,5 +1,17 @@
-<header class="bg-brandBlue text-white py-4">
-  <div class="max-w-6xl mx-auto px-4">
-    <h1 class="text-xl font-semibold">Rise Above</h1>
+---
+import site from '../data/site.json';
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 flex justify-between items-center py-4">
+    <a href="/" class="flex items-center gap-2">
+      <img src={site.logo} alt={site.siteName + ' Logo'} class="h-10 w-auto" />
+      <span class="font-bold text-lg text-gray-800 hidden sm:block">{site.siteName}</span>
+    </a>
+    <nav class="flex gap-6">
+      {site.navigation.map((item) => (
+        <a href={item.href} class="text-gray-700 hover:text-brandBlue">{item.label}</a>
+      ))}
+    </nav>
   </div>
 </header>

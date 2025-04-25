@@ -1,21 +1,9 @@
 {
-    "heroTitle": "Great marketing isn’t louder.",
-    "heroDescription": "It’s sharper, smarter, and grounded in thoughtful strategy.",
-    "features": [
-      {
-        "title": "Strategy",
-        "description": "We craft thoughtful, measurable campaigns.",
-        "icon": "strategic"
-      },
-      {
-        "title": "Creativity",
-        "description": "Story-driven design that resonates.",
-        "icon": "creative"
-      },
-      {
-        "title": "Data",
-        "description": "Insightful analytics to guide decisions.",
-        "icon": "data"
-      }
-    ]
-  }
+  "heroTitle": "Strategic Marketing for Bold Brands",
+  "heroDescription": "Helping you rise above the noise with clarity, creativity, and precision.",
+  "features": [
+    { "title": "Marketing Strategy", "description": "Clarity-driven campaigns that convert." },
+    { "title": "Creative Direction", "description": "Messaging and visuals that resonate." },
+    { "title": "Analytics & Growth", "description": "Turning insight into scalable growth." }
+  ]
+}

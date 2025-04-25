@@ -1,0 +1,15 @@
+{
+    "siteName": "Rise Above",
+    "logo": "/images/logo.svg",
+    "navigation": [
+      { "label": "Home", "href": "/" },
+      { "label": "Services", "href": "/services" },
+      { "label": "About", "href": "/about" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "footerLinks": [
+      { "label": "FAQ", "href": "/faq", "enabled": true },
+      { "label": "Terms", "href": "/terms", "enabled": false },
+      { "label": "Privacy", "href": "/privacy", "enabled": false }
+    ]
+  }
