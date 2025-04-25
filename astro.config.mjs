@@ -1,7 +1,3 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-
-export default defineConfig({
-  adapter: staticAdapter(),
-  integrations: [],
-});
+import staticAdapter from '@astrojs/adapter-static';
+export default defineConfig({ adapter: staticAdapter() });
