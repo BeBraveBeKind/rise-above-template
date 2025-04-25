@@ -11,26 +11,35 @@ public_folder: "/images/uploads"
 collections:
   - name: "home"
     label: "Homepage"
-    file: "src/data/home.json"
-    fields:
-      - { label: "Hero Title", name: "heroTitle", widget: "string" }
-      - { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
+    files:
+      - label: "Home Content"
+        name: "home"
+        file: "src/data/home.json"
+        fields:
+          - { label: "Hero Title", name: "heroTitle", widget: "string" }
+          - { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
 
   - name: "services"
     label: "Services"
-    file: "src/data/services.json"
-    fields:
-      - { label: "Section Title", name: "sectionTitle", widget: "string" }
-      - label: "Services"
-        name: "items"
-        widget: "list"
+    files:
+      - label: "Services List"
+        name: "services"
+        file: "src/data/services.json"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Section Title", name: "sectionTitle", widget: "string" }
+          - label: "Services"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
 
   - name: "contact"
     label: "Contact Page"
-    file: "src/data/contact.json"
-    fields:
-      - { label: "Headline", name: "headline", widget: "string" }
-      - { label: "Subtext", name: "subtext", widget: "text" }
+    files:
+      - label: "Contact Info"
+        name: "contact"
+        file: "src/data/contact.json"
+        fields:
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Subtext", name: "subtext", widget: "text" }
