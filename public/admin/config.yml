@@ -2,7 +2,7 @@ backend:
   name: github
   repo: BeBraveBeKind/rise-above-template
   branch: main
-  base_url: https://riseabovetemplate.netlify.app
+  base_url: https://rise-above-template.netlify.app
   auth_endpoint: /.netlify/functions/auth
 
 media_folder: "public/images/uploads"
