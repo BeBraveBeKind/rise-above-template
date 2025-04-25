@@ -20,36 +20,37 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Icon", name: "icon", widget: "select", options: ["strategic", "creative", "data"] }
-          - name: "services"
 
-label: "Services"
- folder: "src/data/services"
-create: true
-extension: "json"
-format: "json"
- fields:
-   - { label: "Title", name: "title", widget: "string" }
-   - { label: "Description", name: "description", widget: "text" }
-   - { label: "Image", name: "image", widget: "image" }
-   - { label: "Order", name: "order", widget: "number" }
+  - name: "services"
+    label: "Services"
+    folder: "src/data/services"
+    create: true
+    extension: "json"
+    format: "json"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Order", name: "order", widget: "number" }
 
-- name: "testimonials"
-  label: "Testimonials"
-  folder: "src/data/testimonials"
-  create: true
-  extension: "json"
-  format: "json"
-  fields:
-    - { label: "Client Name", name: "name", widget: "string" }
-    - { label: "Company", name: "company", widget: "string" }
-    - { label: "Testimonial", name: "testimonial", widget: "text" }
-    - { label: "Avatar", name: "avatar", widget: "image", required: false }
-- name: "faqs"
-  label: "FAQs"
-  folder: "src/data/faqs"
-  create: true
-  extension: "json"
-  format: "json"
-  fields:
-    - { label: "Question", name: "question", widget: "string" }
-    - { label: "Answer", name: "answer", widget: "text" }
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "src/data/testimonials"
+    create: true
+    extension: "json"
+    format: "json"
+    fields:
+      - { label: "Client Name", name: "name", widget: "string" }
+      - { label: "Company", name: "company", widget: "string" }
+      - { label: "Testimonial", name: "testimonial", widget: "text" }
+      - { label: "Avatar", name: "avatar", widget: "image", required: false }
+
+  - name: "faqs"
+    label: "FAQs"
+    folder: "src/data/faqs"
+    create: true
+    extension: "json"
+    format: "json"
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Answer", name: "answer", widget: "text" }
