@@ -1,38 +1,36 @@
-exports.handler = async (event, context) => {
-  const params = event.queryStringParameters;
-  const code = params.code;
+backend:
+  name: github
+  repo: BeBraveBeKind/rise-above-template
+  branch: main
+  base_url: https://riseabovetemplate.netlify.app
+  auth_endpoint: /.netlify/functions/auth
 
-  if (!code) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: "No code provided" }),
-    };
-  }
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
 
-  const client_id = process.env.GITHUB_CLIENT_ID;
-  const client_secret = process.env.GITHUB_CLIENT_SECRET;
+collections:
+  - name: "home"
+    label: "Homepage"
+    file: "src/data/home.json"
+    fields:
+      - { label: "Hero Title", name: "heroTitle", widget: "string" }
+      - { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
 
-  const tokenRequest = await fetch(`https://github.com/login/oauth/access_token`, {
-    method: "POST",
-    headers: { Accept: "application/json" },
-    body: new URLSearchParams({
-      client_id,
-      client_secret,
-      code,
-    }),
-  });
+  - name: "services"
+    label: "Services"
+    file: "src/data/services.json"
+    fields:
+      - { label: "Section Title", name: "sectionTitle", widget: "string" }
+      - label: "Services"
+        name: "items"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
 
-  const tokenData = await tokenRequest.json();
-
-  if (tokenData.error) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: tokenData.error }),
-    };
-  }
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify(tokenData),
-  };
-};
+  - name: "contact"
+    label: "Contact Page"
+    file: "src/data/contact.json"
+    fields:
+      - { label: "Headline", name: "headline", widget: "string" }
+      - { label: "Subtext", name: "subtext", widget: "text" }
