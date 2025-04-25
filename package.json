@@ -1,1 +1,1 @@
-{"name":"rise-above-template","scripts":{"dev":"astro dev","build":"astro build"},"dependencies":{"astro":"^5.7.5"}}
+{"name":"rise-above-template","scripts":{"dev":"astro dev","build":"astro build"},"dependencies":{"astro":"^5.7.5"},"devDependencies":{"tailwindcss":"^4.1.4"}}
