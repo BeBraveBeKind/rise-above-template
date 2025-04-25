@@ -1,13 +1,43 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin | Rise Above CMS</title>
-</head>
-<body>
-  <script src="https://unpkg.com/netlify-cms@latest/dist/netlify-cms.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Rise Above CMS</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/netlify-cms-app@latest/dist/netlify-cms-app.js"></script>
+    <script>
+      window.CMS.init({
+        config: {
+          backend: {
+            name: "github",
+            repo: "BeBraveBeKind/rise-above-template",
+            branch: "main",
+            auth_scope: "repo",
+            base_url: "https://rise-above-template.netlify.app",
+            auth_endpoint: "/.netlify/functions/auth"
+          },
+          media_folder: "public/images/uploads",
+          public_folder: "/images/uploads",
+          collections: [
+            {
+              name: "home",
+              label: "Homepage",
+              files: [
+                {
+                  label: "Home Content",
+                  name: "home",
+                  file: "src/data/home.json",
+                  fields: [
+                    { label: "Hero Title", name: "heroTitle", widget: "string" },
+                    { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      });
+    </script>
+  </body>
 </html>
