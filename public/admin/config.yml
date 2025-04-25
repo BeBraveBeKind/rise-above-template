@@ -1,60 +1,38 @@
-backend:
-  name: git-gateway
-  branch: main
+exports.handler = async (event, context) => {
+  const params = event.queryStringParameters;
+  const code = params.code;
 
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+  if (!code) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: "No code provided" }),
+    };
+  }
 
-collections:
-  - name: "site"
-    label: "Site Settings"
-    files:
-      - name: "site"
-        label: "Site Settings"
-        file: "src/data/site.json"
-        fields:
-          - { label: "Site Name", name: "siteName", widget: "string" }
-          - { label: "Logo Path", name: "logo", widget: "string" }
-          - label: "Navigation Links"
-            name: "navigation"
-            widget: "list"
-            fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "Href", name: "href", widget: "string" }
-          - label: "Footer Links"
-            name: "footerLinks"
-            widget: "list"
-            fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "Href", name: "href", widget: "string" }
-              - { label: "Enabled", name: "enabled", widget: "boolean" }
+  const client_id = process.env.GITHUB_CLIENT_ID;
+  const client_secret = process.env.GITHUB_CLIENT_SECRET;
 
-  - name: "home"
-    label: "Home Page"
-    files:
-      - name: "home"
-        label: "Home Page Content"
-        file: "src/data/home.json"
-        fields:
-          - { label: "Hero Title", name: "heroTitle", widget: "string" }
-          - { label: "Hero Description", name: "heroDescription", widget: "text" }
-          - label: "Features"
-            name: "features"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
+  const tokenRequest = await fetch(`https://github.com/login/oauth/access_token`, {
+    method: "POST",
+    headers: { Accept: "application/json" },
+    body: new URLSearchParams({
+      client_id,
+      client_secret,
+      code,
+    }),
+  });
 
-  - name: "services"
-    label: "Services"
-    files:
-      - name: "services"
-        label: "Services List"
-        file: "src/data/services.json"
-        fields:
-          - label: "Services"
-            name: "services"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
+  const tokenData = await tokenRequest.json();
+
+  if (tokenData.error) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: tokenData.error }),
+    };
+  }
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify(tokenData),
+  };
+};
