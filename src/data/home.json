@@ -1,0 +1,21 @@
+{
+    "heroTitle": "Great marketing isn’t louder.",
+    "heroDescription": "It’s sharper, smarter, and grounded in thoughtful strategy.",
+    "features": [
+      {
+        "title": "Strategy",
+        "description": "We craft thoughtful, measurable campaigns.",
+        "icon": "strategic"
+      },
+      {
+        "title": "Creativity",
+        "description": "Story-driven design that resonates.",
+        "icon": "creative"
+      },
+      {
+        "title": "Data",
+        "description": "Insightful analytics to guide decisions.",
+        "icon": "data"
+      }
+    ]
+  }
