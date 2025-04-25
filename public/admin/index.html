@@ -7,6 +7,15 @@
   <body>
     <script src="https://unpkg.com/netlify-cms-app@latest/dist/netlify-cms-app.js"></script>
     <script>
+      window.CMS.registerBackend('github', {
+        authProvider: 'github',
+        apiRoot: 'https://api.github.com',
+        base_url: 'https://rise-above-template.netlify.app',
+        auth_endpoint: '/.netlify/functions/auth',
+        displayURL: 'https://rise-above-template.netlify.app',
+      });
+    </script>
+    <script>
       window.CMS.init({
         config: {
           backend: {
