@@ -2,20 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
   </head>
   <body>
-    <!-- Load the script in the body -->
+    <!-- Load Decap CMS -->
     <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.6.2/dist/decap-cms.js"></script>
     <script>
-      // Initialize CMS only after the DOM is fully loaded
+      // Wait for document to be fully loaded
       document.addEventListener('DOMContentLoaded', function() {
-        // Check if CMS exists before initializing
-        if (window.CMS) {
-          window.CMS.init();
-        } else {
-          console.error('CMS object not found. Script may not have loaded correctly.');
-        }
+        console.log("DOM fully loaded");
+        // Give a short delay to ensure everything is ready
+        setTimeout(function() {
+          if (window.CMS) {
+            console.log("Initializing CMS");
+            window.CMS.init();
+          } else {
+            console.error("CMS not found");
+          }
+        }, 100);
       });
     </script>
   </body>
