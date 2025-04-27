@@ -5,121 +5,115 @@
     <title>Rise Above CMS</title>
   </head>
   <body>
-    <script src="https://unpkg.com/netlify-cms-app@latest/dist/netlify-cms-app.js"></script>
+    <script src="https://unpkg.com/netlify-cms-app@2.10.192/dist/netlify-cms-app.js"></script>
+
     <script>
-      window.CMS.registerBackend('github', {
-        authProvider: 'github',
-        apiRoot: 'https://api.github.com',
-        base_url: 'https://rise-above-template.netlify.app',
-        auth_endpoint: '/.netlify/functions/auth',
-        displayURL: 'https://rise-above-template.netlify.app',
-      });
-    </script>
-    <script>
-      window.CMS.init({
-        config: {
-          backend: {
-            name: "github",
-            repo: "BeBraveBeKind/rise-above-template",
-            branch: "main",
-            base_url: "https://rise-above-template.netlify.app",
-            auth_endpoint: "/.netlify/functions/auth"
-          },
-          media_folder: "public/images/uploads",
-          public_folder: "/images/uploads",
-          collections: [
-            {
-              name: "home",
-              label: "Homepage",
-              files: [
-                {
-                  label: "Home Content",
-                  name: "home",
-                  file: "src/data/home.json",
-                  fields: [
-                    { label: "Hero Title", name: "heroTitle", widget: "string" },
-                    { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
-                  ]
-                }
-              ]
+      window.addEventListener('load', function() {
+        window.CMS.init({
+          config: {
+            backend: {
+              name: "github",
+              repo: "BeBraveBeKind/rise-above-template",
+              branch: "main",
+              base_url: "https://rise-above-template.netlify.app",
+              auth_endpoint: "/.netlify/functions/auth"
             },
-            {
-              name: "services",
-              label: "Services",
-              files: [
-                {
-                  label: "Services Content",
-                  name: "services",
-                  file: "src/data/services.json",
-                  fields: [
-                    { label: "Section Title", name: "sectionTitle", widget: "string" },
-                    { label: "Service Items", name: "items", widget: "list", fields: [
+            media_folder: "public/images/uploads",
+            public_folder: "/images/uploads",
+            collections: [
+              {
+                name: "home",
+                label: "Homepage",
+                files: [
+                  {
+                    label: "Home Content",
+                    name: "home",
+                    file: "src/data/home.json",
+                    fields: [
+                      { label: "Hero Title", name: "heroTitle", widget: "string" },
+                      { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
+                    ]
+                  }
+                ]
+              },
+              {
+                name: "services",
+                label: "Services",
+                files: [
+                  {
+                    label: "Services Content",
+                    name: "services",
+                    file: "src/data/services.json",
+                    fields: [
+                      { label: "Section Title", name: "sectionTitle", widget: "string" },
+                      { label: "Service Items", name: "items", widget: "list", fields: [
+                        { label: "Title", name: "title", widget: "string" },
+                        { label: "Description", name: "description", widget: "text" }
+                      ]}
+                    ]
+                  }
+                ]
+              },
+              {
+                name: "contact",
+                label: "Contact",
+                files: [
+                  {
+                    label: "Contact Info",
+                    name: "contact",
+                    file: "src/data/contact.json",
+                    fields: [
+                      { label: "Headline", name: "headline", widget: "string" },
+                      { label: "Subtext", name: "subtext", widget: "text" }
+                    ]
+                  }
+                ]
+              },
+              {
+                name: "faq",
+                label: "FAQ",
+                files: [
+                  {
+                    label: "FAQ Content",
+                    name: "faq",
+                    file: "src/data/faq.json",
+                    fields: [
+                      { label: "FAQ Section Title", name: "faqTitle", widget: "string" },
+                      { label: "FAQs", name: "faqs", widget: "list", fields: [
+                        { label: "Question", name: "question", widget: "string" },
+                        { label: "Answer", name: "answer", widget: "text" }
+                      ]}
+                    ]
+                  }
+                ]
+              },
+              {
+                name: "legal",
+                label: "Legal Pages",
+                files: [
+                  {
+                    label: "Terms of Service",
+                    name: "terms",
+                    file: "src/data/terms.json",
+                    fields: [
                       { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "description", widget: "text" }
-                    ]}
-                  ]
-                }
-              ]
-            },
-            {
-              name: "contact",
-              label: "Contact",
-              files: [
-                {
-                  label: "Contact Info",
-                  name: "contact",
-                  file: "src/data/contact.json",
-                  fields: [
-                    { label: "Headline", name: "headline", widget: "string" },
-                    { label: "Subtext", name: "subtext", widget: "text" }
-                  ]
-                }
-              ]
-            },
-            {
-              name: "faq",
-              label: "FAQ",
-              files: [
-                {
-                  label: "FAQ Content",
-                  name: "faq",
-                  file: "src/data/faq.json",
-                  fields: [
-                    { label: "FAQ Section Title", name: "faqTitle", widget: "string" },
-                    { label: "FAQs", name: "faqs", widget: "list", fields: [
-                      { label: "Question", name: "question", widget: "string" },
-                      { label: "Answer", name: "answer", widget: "text" }
-                    ]}
-                  ]
-                }
-              ]
-            },
-            {
-              name: "legal",
-              label: "Legal Pages",
-              files: [
-                {
-                  label: "Terms of Service",
-                  name: "terms",
-                  file: "src/data/terms.json",
-                  fields: [
-                    { label: "Title", name: "title", widget: "string" },
-                    { label: "Content", name: "content", widget: "markdown" }
-                  ]
-                },
-                {
-                  label: "Privacy Policy",
-                  name: "privacy",
-                  file: "src/data/privacy.json",
-                  fields: [
-                    { label: "Title", name: "title", widget: "string" },
-                    { label: "Content", name: "content", widget: "markdown" }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
+                      { label: "Content", name: "content", widget: "markdown" }
+                    ]
+                  },
+                  {
+                    label: "Privacy Policy",
+                    name: "privacy",
+                    file: "src/data/privacy.json",
+                    fields: [
+                      { label: "Title", name: "title", widget: "string" },
+                      { label: "Content", name: "content", widget: "markdown" }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        });
       });
     </script>
   </body>
