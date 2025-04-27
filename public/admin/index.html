@@ -3,11 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <title>Content Manager</title>
-    <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.6.2/dist/decap-cms.js"></script>
   </head>
   <body>
+    <!-- Load the script in the body -->
+    <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.6.2/dist/decap-cms.js"></script>
     <script>
-      window.CMS.init();
+      // Initialize CMS only after the DOM is fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check if CMS exists before initializing
+        if (window.CMS) {
+          window.CMS.init();
+        } else {
+          console.error('CMS object not found. Script may not have loaded correctly.');
+        }
+      });
     </script>
   </body>
 </html>
