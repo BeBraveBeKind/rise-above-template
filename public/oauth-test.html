@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OAuth Test</title>
+</head>
+<body>
+  <h1>GitHub OAuth Test</h1>
+  <button id="login">Login with GitHub</button>
+  <div id="response"></div>
+
+  <script>
+    document.getElementById('login').addEventListener('click', function() {
+      const clientId = 'Ov23liCLxD20bk2oANHX';
+      const redirectUri = 'https://rise-above-template.netlify.app/.netlify/functions/auth-test';
+      const url = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=repo`;
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
