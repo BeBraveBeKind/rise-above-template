@@ -1,55 +1,17 @@
-# Rise Above Template (TinaCMS + Astro)
+[build]
+command = "npm run build"
+publish = "dist/"
+functions = "netlify/functions"
 
-This project is powered by Astro and TinaCMS for flexible, content-driven websites. Below is the checklist to prepare and deploy to Netlify.
+[build.environment]
+NODE_VERSION = "20.9.0"
 
----
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
 
-## 🚀 Netlify Deploy Checklist (TinaCMS + Astro)
-
-1. **Set build command and output directory in `netlify.toml`:**
-   ```toml
-   [build]
-   command = "npm run build"
-   publish = "dist/"
-   functions = "netlify/functions"
-
-   [build.environment]
-   NODE_VERSION = "20.9.0"
-
-   [[redirects]]
-   from = "/api/*"
-   to = "/.netlify/functions/:splat"
-   status = 200
-
-   [[redirects]]
-   from = "/admin"
-   to = "/admin/index.html"
-   status = 200
-   ```
-
-2. **Add Tina CMS secrets (if using Tina Cloud):**
-
-   In **Netlify → Site Settings → Environment Variables**:
-   ```
-   TINA_PUBLIC_CLIENT_ID = your-client-id
-   TINA_TOKEN = your-token
-   ```
-
-3. **Push changes to GitHub:**
-   ```bash
-   git add .
-   git commit -m "Prep for Netlify deploy with TinaCMS"
-   git push origin TinaCMS
-   ```
-
-4. **Connect GitHub repo to Netlify:**
-   - Go to Netlify and connect your GitHub repo
-   - Set the build branch to `TinaCMS`
-
-5. **Deploy and test:**
-   - Visit: `https://your-site.netlify.app/admin/index.html`
-   - Edit content → save → confirm GitHub commits
-
----
-
-Happy editing with Tina + Astro!
+[[redirects]]
+from = "/admin"
+to = "/admin/index.html"
+status = 200
