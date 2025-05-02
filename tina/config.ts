@@ -20,7 +20,7 @@ export default defineConfig({
         label: "Website Content",
         name: "website",
         match: {
-          include: ["home.json", "services.json", "contact.json"],
+          include: ["home.json", "services.json", "site.json", "testimonials.json"],
         },
         templates: [
           {
@@ -31,7 +31,17 @@ export default defineConfig({
             },
             fields: [
               { type: "string", name: "heroTitle", label: "Hero Title" },
-              { type: "string", name: "heroSubtitle", label: "Hero Subtitle" },
+              { type: "string", name: "heroDescription", label: "Hero Description" },
+              {
+                type: "object",
+                name: "features",
+                label: "Features",
+                list: true,
+                fields: [
+                  { type: "string", name: "title", label: "Feature Title" },
+                  { type: "string", name: "description", label: "Feature Description" },
+                ],
+              },
             ],
           },
           {
@@ -41,10 +51,9 @@ export default defineConfig({
               include: "services.json",
             },
             fields: [
-              { type: "string", name: "sectionTitle", label: "Section Title" },
               {
                 type: "object",
-                name: "items",
+                name: "0",
                 label: "Services",
                 list: true,
                 fields: [
@@ -55,18 +64,59 @@ export default defineConfig({
             ],
           },
           {
-            name: "contact",
-            label: "Contact Page",
+            name: "site",
+            label: "Site Configuration",
             match: {
-              include: "contact.json",
+              include: "site.json",
             },
             fields: [
-              { type: "string", name: "headline", label: "Headline" },
-              { type: "string", name: "subtext", label: "Subtext" },
+              { type: "string", name: "siteName", label: "Site Name" },
+              { type: "string", name: "logo", label: "Logo Path" },
+              {
+                type: "object",
+                name: "navigation",
+                label: "Navigation Links",
+                list: true,
+                fields: [
+                  { type: "string", name: "label", label: "Link Label" },
+                  { type: "string", name: "href", label: "Link URL" },
+                ],
+              },
+              {
+                type: "object",
+                name: "footerLinks",
+                label: "Footer Links",
+                list: true,
+                fields: [
+                  { type: "string", name: "label", label: "Link Label" },
+                  { type: "string", name: "href", label: "Link URL" },
+                  { type: "boolean", name: "enabled", label: "Enabled" },
+                ],
+              },
+            ],
+          },
+          {
+            name: "testimonials",
+            label: "Testimonials",
+            match: {
+              include: "testimonials.json",
+            },
+            fields: [
+              {
+                type: "object",
+                name: "testimonials",
+                label: "Testimonials",
+                list: true,
+                fields: [
+                  { type: "string", name: "name", label: "Client Name" },
+                  { type: "string", name: "text", label: "Testimonial Text" },
+                  { type: "string", name: "location", label: "Client Location" },
+                ],
+              },
             ],
           },
         ],
-        path: "src/content",
+        path: "src/data",
         format: "json",
       },
       {
@@ -75,7 +125,7 @@ export default defineConfig({
         path: "src/content",
         format: "json",
         match: {
-          exclude: ["home.json", "services.json", "contact.json"],
+          include: "*.json",
         },
         fields: [
           { type: "string", name: "title", label: "Title" },
